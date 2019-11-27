@@ -1,0 +1,162 @@
+<div *ngIf="innerWidth > 750">
+  <div class="row">
+    <div class="col-md-6">
+      <h4>Filter By Name</h4>
+      <div class="card">
+        <div class="card-body">
+          <label for="name" class="control-label">Name</label>
+          <input
+            type="string"
+            id="name"
+            class="form-control"
+            placeholder="Search Games"
+            (keyup)="prodFilterName($event.target.value)"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>Filter By Price</h4>
+      <div class="card">
+        <div class="card-body">
+          <label for="number" class="control-label">Price</label>
+          <input
+            type="number"
+            id="number"
+            class="form-control"
+            placeholder="Max Price"
+            (keyup)="prodFilterPrice($event.target.value)"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <h1>Our Products:</h1>
+    <div *ngIf="shownProducts.length == 0">
+      <h2>No results were found. Please change your serach.</h2>
+    </div>
+    <ul class="list-unstyled ">
+      <div *ngFor="let product of shownProducts">
+        <li class="media" style="margin: 0 0 10px 0">
+          <img src="{{ product.image }}" class="mr-3" alt="..." />
+          <div class="media-body">
+            <h5 class="mt-0 mb-1">{{ product.name }}</h5>
+            <p>{{ product.description }}</p>
+          </div>
+          <div style="margin: 0 0 0  10px">
+            <div>Amount Available: {{ product.amountAvailable }}</div>
+            <div>Price: {{ product.price }}</div>
+            <div style="margin: 80px  0 0 0">
+              Amount In Cart: {{ quantities[product.id - 1] }}
+            </div>
+          </div>
+          <div>
+            <button
+              id="addBtn{{ product.id - 1 }}"
+              type="button"
+              class="btn btn-outline-primary"
+              style="margin: 10px  0 0 10px"
+              (click)="add(product.id - 1)"
+            >
+              Add
+            </button>
+            <button
+              id="removeBtn{{ product.id - 1 }}"
+              type="button"
+              class="btn btn-outline-primary disabled"
+              style="margin: 10px  0 0 10px"
+              (click)="decrease(product.id - 1)"
+            >
+              Remove
+            </button>
+          </div>
+        </li>
+      </div>
+    </ul>
+  </div>
+</div>
+
+<div *ngIf="!(innerWidth > 750)">
+  <div class="row">
+    <div class="col-6">
+      <h4>Filter By Name</h4>
+      <div class="card">
+        <div class="card-body">
+          <label for="name" class="control-label">Name:</label>
+          <input
+            type="string"
+            id="name"
+            class="form-control"
+            placeholder="Search Games"
+            (keyup)="prodFilterName($event.target.value)"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <h4>Filter By Price</h4>
+      <div class="card">
+        <div class="card-body">
+          <label for="number" class="control-label">Max Price:</label>
+          <input
+            type="number"
+            id="number"
+            class="form-control"
+            placeholder="Max Price"
+            (keyup)="prodFilterPrice($event.target.value)"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <h5>Our Products:</h5>
+  <div *ngIf="shownProducts.length == 0">
+    <h6>No results were found. Please change your serach.</h6>
+  </div>
+  <ul class="list-unstyled">
+    <div *ngFor="let product of shownProducts">
+      <div class="row">
+        <img
+          src="{{ product.image }}"
+          class="mr-3"
+          alt="..."
+          style="width: 64px; height: 64px; margin: 10px 0 0 0;"
+        />
+        <div class="media-body">
+          <h6 class="mt-0 mb-1">{{ product.name }}</h6>
+          <small>{{ product.description }}</small>
+        </div>
+      </div>
+      <div class="row">
+        <small class="col-sm-4">
+          Amount Available: {{ product.amountAvailable }}
+        </small>
+        <small class="col-sm-4">Price: {{ product.price }}</small>
+        <small class="col-sm-4">
+          Amount In Cart: {{ quantities[product.id - 1] }}
+        </small>
+      </div>
+      <div class="row">
+        <button
+          id="addBtn{{ product.id - 1 }}"
+          type="button"
+          class="btn btn-outline-primary btn-sm"
+          (click)="add(product.id - 1)"
+          style="margin: 10px 10px 10px 10px;"
+        >
+          Add
+        </button>
+        <button
+          id="removeBtn{{ product.id - 1 }}"
+          type="button"
+          class="btn btn-outline-primary btn-sm disabled"
+          (click)="decrease(product.id - 1)"
+          style="margin: 10px 10px 10px 10px;"
+        >
+          Remove
+        </button>
+      </div>
+    </div>
+  </ul>
+</div>

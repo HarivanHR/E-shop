@@ -1,0 +1,89 @@
+<div *ngIf="innerWidth > 750">
+  <h1>Your Cart:</h1>
+  <div class="row">
+    <div class="col-md-8">
+      <div *ngIf="isCartEmpty()" style="margin: 80px 0 0 0">
+        <h2>Your cart is empty. Go to the shop and buy some!</h2>
+      </div>
+      <ul class="list-unstyled">
+        <div *ngFor="let product of products">
+          <div *ngIf="quantities[product.id - 1] > 0">
+            <li class="media" style="margin: 0 0 10px 0">
+              <img src="{{ product.image }}" class="mr-3" alt="..." />
+              <div class="media-body">
+                <h5 class="mt-0 mb-1">{{ product.name }}</h5>
+                {{ product.description }}
+              </div>
+              <div>
+                <div>Amount In Cart: {{ quantities[product.id - 1] }}</div>
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  (click)="removeFromCart(product.id - 1)"
+                  style="margin: 80px  0 0 0"
+                >
+                  Remove From Cart
+                </button>
+              </div>
+            </li>
+          </div>
+        </div>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <h2>Total Price: {{ total }}</h2>
+      <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!(innerWidth > 750)">
+  <div class="container-fluid">
+    <div class="row">
+      <h6 class="col-sm-6">Your Cart:</h6>
+      <h6 class="col-sm-6">Total Price: {{ total }}</h6>
+    </div>
+    <div class="col-md-8">
+      <div *ngIf="isCartEmpty()" style="margin: 40px 0 0 0">
+        <h6>Your cart is empty. Go to the shop and buy some!</h6>
+      </div>
+    </div>
+    <div class="row">
+      <ul class="list-unstyled">
+        <div *ngFor="let product of products">
+          <div *ngIf="quantities[product.id - 1] > 0">
+            <div class="row">
+              <li class="media" style="margin: 0 0 10px 0">
+                <img
+                  src="{{ product.image }}"
+                  class="mr-3"
+                  alt="..."
+                  style="width: 64px; height: 64px; margin: 10px 0 0 0;"
+                />
+                <div class="media-body">
+                  <h6 class="mt-0 mb-1">{{ product.name }}</h6>
+                  <small>{{ product.description }}</small>
+                </div>
+              </li>
+            </div>
+            <div class="row" style="margin-bottom: 25px;">
+              <small>Amount In Cart: {{ quantities[product.id - 1] }}</small>
+              <button
+                type="button"
+                class="btn btn-danger btn-sm"
+                (click)="removeFromCart(product.id - 1)"
+                style="margin-left: 50px;"
+              >
+                Remove From Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </ul>
+    </div>
+    <div class="row">
+      <h6 style="margin-right: 20px;">Click here to pay:</h6>
+      <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+    </div>
+  </div>
+</div>
