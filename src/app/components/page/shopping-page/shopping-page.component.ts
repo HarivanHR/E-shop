@@ -67,9 +67,4 @@ export class ShoppingPageComponent implements OnInit {
   decrease = id => {
     this.body.decreaseQuantity(id);
   };
-
-  toggleEllipsis = id => {
-    var element = document.querySelector("#desc" + id);
-    element.classList.toggle("text-truncate");
-  };
 }

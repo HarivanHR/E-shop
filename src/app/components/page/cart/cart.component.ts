@@ -86,14 +86,23 @@ export class CartComponent implements OnInit {
           data
         );
         this.body.registerOrder(data);
+        alert(
+          "Purchase was successful. Your account was charged with " +
+            this.total +
+            "$."
+        );
         // this.showSuccess = true;
       },
       onCancel: (data, actions) => {
         console.log("OnCancel", data, actions);
+        alert("The purchase was cancelled.");
+
         // this.showCancel = true;
       },
       onError: err => {
         console.log("OnError", err);
+        alert("An error occured. Please try purchasing again.");
+
         //this.showError = true;
       },
       onClick: (data, actions) => {
