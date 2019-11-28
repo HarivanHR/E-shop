@@ -4,9 +4,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Required installation
 
+First of all, NodeJS is required. Download NodeJS from `https://nodejs.org/en/`.
+
 After cloning the project, it is required to run the following commands from the directory itself.
 1. `npm install angular --save`
-2. `npm install ngx-paypal --save
+2. `npm install ngx-paypal --save`
 
 ## Development server
 
