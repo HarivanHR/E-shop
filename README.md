@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
 
-## Required installation
+## Dependecies
 
 First of all, NodeJS is required. Install it using your operating system package manager, or alternatively, download it
 from NodeJS website.
@@ -14,6 +14,7 @@ Following that it is required to install npm (node package manager).
 After cloning the project, it is required to run the following commands from the directory itself.
 1. `npm install -g @angular/cli`
 2. `npm install ngx-paypal --save`
+3. `npm install --save-dev @angular-devkit/build-angular`.
 
 Check that angular was successfully installed using `ng v`.
 
