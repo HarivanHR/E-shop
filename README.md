@@ -9,9 +9,13 @@ from NodeJS website.
 
 Website link: `https://nodejs.org/en/`.
 
+Following that it is required to install npm (node package manager).
+
 After cloning the project, it is required to run the following commands from the directory itself.
-1. `npm install angular --save`
+1. `npm install -g @angular/cli`
 2. `npm install ngx-paypal --save`
+
+Check that angular was successfully installed using `ng v`.
 
 ## Development server
 
